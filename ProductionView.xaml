@@ -1,0 +1,92 @@
+<UserControl x:Class="IsomerizationCalc.ProductionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:Background="#0E1620"
+             d:DesignWidth="820" d:DesignHeight="900">
+    <StackPanel>
+
+        <!-- ===================== 1. Feed ===================== -->
+        <TextBlock Style="{StaticResource SectionTitle}" Text="1. Feed"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,0,10,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Flow (ton/day)"/>
+                <TextBox x:Name="FeedTon" Margin="0,4,0,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="0,0,0,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Density (ton/m³)"/>
+                <TextBox x:Name="FeedDensity" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- ===================== 2. Production to Saladin ===================== -->
+        <TextBlock Style="{StaticResource SectionTitle}" Text="2. Production to Saladin"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,0,10,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Flow (ton/day)"/>
+                <TextBox x:Name="SaladinTon" Margin="0,4,0,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="0,0,0,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Density (ton/m³)"/>
+                <TextBox x:Name="SaladinDensity" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- ===================== 3. Production to North ===================== -->
+        <TextBlock Style="{StaticResource SectionTitle}" Text="3. Production to North"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,0,10,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Flow (ton/day)"/>
+                <TextBox x:Name="NorthTon" Margin="0,4,0,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="0,0,0,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Density (= Saladin)"/>
+                <!-- Filled automatically from the Saladin density -->
+                <TextBox x:Name="NorthDensity" Margin="0,4,0,0" IsReadOnly="True" IsTabStop="False" Opacity="0.7"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- ===================== 4. L.P.G Gas ===================== -->
+        <TextBlock Style="{StaticResource SectionTitle}" Text="4. L.P.G Gas"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,0,10,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Flow (ton/day)"/>
+                <TextBox x:Name="LpgTon" Margin="0,4,0,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="0,0,0,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Density (ton/m³)"/>
+                <TextBox x:Name="LpgDensity" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- ===================== Result card ===================== -->
+        <Border Style="{StaticResource HighlightCard}" Margin="0,16,0,12">
+            <StackPanel>
+                <TextBlock Style="{StaticResource MutedText}" Text="Yield"/>
+                <TextBlock x:Name="TvYield" Style="{StaticResource BigNumber}" FontSize="38" Text="0.00%"/>
+                <TextBlock x:Name="TvTotal" Style="{StaticResource MonoBlock}" Margin="0,6,0,0" Text="Total production: 0 m³/day"/>
+                <Border Style="{StaticResource Divider}"/>
+                <TextBlock x:Name="TvDetails" Style="{StaticResource MonoBlock}"/>
+            </StackPanel>
+        </Border>
+
+    </StackPanel>
+</UserControl>

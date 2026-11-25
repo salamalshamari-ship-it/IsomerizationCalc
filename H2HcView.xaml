@@ -1,0 +1,295 @@
+<UserControl x:Class="IsomerizationCalc.H2HcView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:Background="#0E1620"
+             d:DesignWidth="820" d:DesignHeight="2600">
+    <StackPanel>
+        <!-- ===================== Make Up ===================== -->
+        <Border Style="{StaticResource CardBorder}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource SectionTitle}" Text="Make Up"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource ColHeader}" Text="Component"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource ColHeader}" Text="Input (%)"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource ColHeader}" Text="M.Wt Contribution (g/mol)"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="H₂"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="MkInH2" Margin="3"/>
+                    <Border Grid.Row="1" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="MkMwH2" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="C1"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="MkInC1" Margin="3"/>
+                    <Border Grid.Row="2" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="MkMwC1" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="C2"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="MkInC2" Margin="3"/>
+                    <Border Grid.Row="3" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="MkMwC2" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="C3"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="MkInC3" Margin="3"/>
+                    <Border Grid.Row="4" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="MkMwC3" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="iC4"/>
+                    <TextBox Grid.Row="5" Grid.Column="1" x:Name="MkInIC4" Margin="3"/>
+                    <Border Grid.Row="5" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="MkMwIC4" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="nC4"/>
+                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="MkInNC4" Margin="3"/>
+                    <Border Grid.Row="6" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="MkMwNC4" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="iC5"/>
+                    <TextBox Grid.Row="7" Grid.Column="1" x:Name="MkInIC5" Margin="3"/>
+                    <Border Grid.Row="7" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="MkMwIC5" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="8" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="nC5"/>
+                    <TextBox Grid.Row="8" Grid.Column="1" x:Name="MkInNC5" Margin="3"/>
+                    <Border Grid.Row="8" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="MkMwNC5" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                </Grid>
+
+                <StackPanel Margin="0,12,0,8">
+                    <TextBlock Style="{StaticResource FieldLabel}" Text="Make Up Flowrate (kg/hr)"/>
+                    <TextBox x:Name="MkFlow" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <TextBlock Style="{StaticResource MutedText}" Text="Avg. M.Wt (g/mol)"/>
+                <TextBlock x:Name="MkAvg" Style="{StaticResource BigNumber}" FontSize="30" Text="0.0000"/>
+                <Border Style="{StaticResource Divider}"/>
+                <DockPanel Margin="0,3">
+                    <TextBlock x:Name="MkSum" DockPanel.Dock="Right" Style="{StaticResource NumberText}" Text="0.00"/>
+                    <TextBlock Style="{StaticResource BodyText}" Text="Σ Input (%)"/>
+                </DockPanel>
+                <DockPanel Margin="0,3">
+                    <TextBlock x:Name="MkMolar" DockPanel.Dock="Right" Style="{StaticResource NumberText}" Text="0.0000"/>
+                    <TextBlock Style="{StaticResource BodyText}" Text="Molar Flowrate (kmol/hr)"/>
+                </DockPanel>
+                <DockPanel Margin="0,3">
+                    <TextBlock x:Name="MkH2Molar" DockPanel.Dock="Right" Style="{StaticResource NumberText}" Text="0.0000"/>
+                    <TextBlock Style="{StaticResource BodyText}" Text="H₂ Molar Flowrate (kmol/hr)"/>
+                </DockPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- ===================== Recycle Gas ===================== -->
+        <Border Style="{StaticResource CardBorder}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource SectionTitle}" Text="Recycle Gas"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource ColHeader}" Text="Component"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource ColHeader}" Text="Input (%)"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource ColHeader}" Text="M.Wt Contribution (g/mol)"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="H₂"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="RcInH2" Margin="3"/>
+                    <Border Grid.Row="1" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="RcMwH2" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="C1"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="RcInC1" Margin="3"/>
+                    <Border Grid.Row="2" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="RcMwC1" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="C2"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="RcInC2" Margin="3"/>
+                    <Border Grid.Row="3" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="RcMwC2" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="C3"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="RcInC3" Margin="3"/>
+                    <Border Grid.Row="4" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="RcMwC3" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="iC4"/>
+                    <TextBox Grid.Row="5" Grid.Column="1" x:Name="RcInIC4" Margin="3"/>
+                    <Border Grid.Row="5" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="RcMwIC4" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="nC4"/>
+                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="RcInNC4" Margin="3"/>
+                    <Border Grid.Row="6" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="RcMwNC4" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="iC5"/>
+                    <TextBox Grid.Row="7" Grid.Column="1" x:Name="RcInIC5" Margin="3"/>
+                    <Border Grid.Row="7" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="RcMwIC5" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="8" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="nC5"/>
+                    <TextBox Grid.Row="8" Grid.Column="1" x:Name="RcInNC5" Margin="3"/>
+                    <Border Grid.Row="8" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="RcMwNC5" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                </Grid>
+
+                <StackPanel Margin="0,12,0,8">
+                    <TextBlock Style="{StaticResource FieldLabel}" Text="Recycle Gas Flowrate (t/hr)"/>
+                    <TextBox x:Name="RcFlow" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <TextBlock Style="{StaticResource MutedText}" Text="Avg. M.Wt (g/mol)"/>
+                <TextBlock x:Name="RcAvg" Style="{StaticResource BigNumber}" FontSize="30" Text="0.0000"/>
+                <Border Style="{StaticResource Divider}"/>
+                <DockPanel Margin="0,3">
+                    <TextBlock x:Name="RcSum" DockPanel.Dock="Right" Style="{StaticResource NumberText}" Text="0.00"/>
+                    <TextBlock Style="{StaticResource BodyText}" Text="Σ Input (%)"/>
+                </DockPanel>
+                <DockPanel Margin="0,3">
+                    <TextBlock x:Name="RcMolar" DockPanel.Dock="Right" Style="{StaticResource NumberText}" Text="0.0000"/>
+                    <TextBlock Style="{StaticResource BodyText}" Text="Molar Flowrate (kmol/hr)"/>
+                </DockPanel>
+                <DockPanel Margin="0,3">
+                    <TextBlock x:Name="RcH2Molar" DockPanel.Dock="Right" Style="{StaticResource NumberText}" Text="0.0000"/>
+                    <TextBlock Style="{StaticResource BodyText}" Text="H₂ Molar Flowrate (kmol/hr)"/>
+                </DockPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- ===================== Feed Components ===================== -->
+        <Border Style="{StaticResource CardBorder}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource SectionTitle}" Text="Feed Components"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource ColHeader}" Text="Component"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource ColHeader}" Text="Area (%)"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource ColHeader}" Text="M.Wt Contribution (g/mol)"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="IC4"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="FdInIC4" Margin="3"/>
+                    <Border Grid.Row="1" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwIC4" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="NC4"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="FdInNC4" Margin="3"/>
+                    <Border Grid.Row="2" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwNC4" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="IC5"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="FdInIC5" Margin="3"/>
+                    <Border Grid.Row="3" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwIC5" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="NC5"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="FdInNC5" Margin="3"/>
+                    <Border Grid.Row="4" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwNC5" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="2.2 DMB"/>
+                    <TextBox Grid.Row="5" Grid.Column="1" x:Name="FdInDMB22" Margin="3"/>
+                    <Border Grid.Row="5" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwDMB22" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="6" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="C.P"/>
+                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="FdInCP" Margin="3"/>
+                    <Border Grid.Row="6" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwCP" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="7" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="2.3 DMB"/>
+                    <TextBox Grid.Row="7" Grid.Column="1" x:Name="FdInDMB23" Margin="3"/>
+                    <Border Grid.Row="7" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwDMB23" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="8" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="2. MP"/>
+                    <TextBox Grid.Row="8" Grid.Column="1" x:Name="FdInMP2" Margin="3"/>
+                    <Border Grid.Row="8" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwMP2" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="9" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="3. MP"/>
+                    <TextBox Grid.Row="9" Grid.Column="1" x:Name="FdInMP3" Margin="3"/>
+                    <Border Grid.Row="9" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwMP3" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="10" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="N.HEX"/>
+                    <TextBox Grid.Row="10" Grid.Column="1" x:Name="FdInNHEX" Margin="3"/>
+                    <Border Grid.Row="10" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwNHEX" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="11" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="2.2 DMP-C7"/>
+                    <TextBox Grid.Row="11" Grid.Column="1" x:Name="FdInDMP22" Margin="3"/>
+                    <Border Grid.Row="11" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwDMP22" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="12" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="M.C.P"/>
+                    <TextBox Grid.Row="12" Grid.Column="1" x:Name="FdInMCP" Margin="3"/>
+                    <Border Grid.Row="12" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwMCP" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="13" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="2.4-DMP-C7"/>
+                    <TextBox Grid.Row="13" Grid.Column="1" x:Name="FdInDMP24" Margin="3"/>
+                    <Border Grid.Row="13" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwDMP24" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="14" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="BEN"/>
+                    <TextBox Grid.Row="14" Grid.Column="1" x:Name="FdInBEN" Margin="3"/>
+                    <Border Grid.Row="14" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwBEN" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="15" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="C.HEX"/>
+                    <TextBox Grid.Row="15" Grid.Column="1" x:Name="FdInCHEX" Margin="3"/>
+                    <Border Grid.Row="15" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwCHEX" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="16" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="2.M-HEX-C7"/>
+                    <TextBox Grid.Row="16" Grid.Column="1" x:Name="FdInMHEX2" Margin="3"/>
+                    <Border Grid.Row="16" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwMHEX2" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="17" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="2.3-DMP-C7"/>
+                    <TextBox Grid.Row="17" Grid.Column="1" x:Name="FdInDMP23" Margin="3"/>
+                    <Border Grid.Row="17" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwDMP23" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="18" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="3M-HEX-C7"/>
+                    <TextBox Grid.Row="18" Grid.Column="1" x:Name="FdInMHEX3" Margin="3"/>
+                    <Border Grid.Row="18" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwMHEX3" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="19" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="CIS-1.3-DMCP-C7"/>
+                    <TextBox Grid.Row="19" Grid.Column="1" x:Name="FdInCISDMCP" Margin="3"/>
+                    <Border Grid.Row="19" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwCISDMCP" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="20" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="TRANS-1.3-DMCP-C7"/>
+                    <TextBox Grid.Row="20" Grid.Column="1" x:Name="FdInTRDMCP" Margin="3"/>
+                    <Border Grid.Row="20" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwTRDMCP" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="21" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="N-HEP-C7"/>
+                    <TextBox Grid.Row="21" Grid.Column="1" x:Name="FdInNHEP" Margin="3"/>
+                    <Border Grid.Row="21" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwNHEP" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                    <TextBlock Grid.Row="22" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="M.C.H-C7"/>
+                    <TextBox Grid.Row="22" Grid.Column="1" x:Name="FdInMCH" Margin="3"/>
+                    <Border Grid.Row="22" Grid.Column="2" Style="{StaticResource OutCell}"><TextBlock x:Name="FdMwMCH" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                </Grid>
+
+                <StackPanel Margin="0,12,0,8">
+                    <TextBlock Style="{StaticResource FieldLabel}" Text="Feed Flowrate (t/hr)"/>
+                    <TextBox x:Name="FdFlow" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <TextBlock Style="{StaticResource MutedText}" Text="Avg. M.Wt (g/mol)"/>
+                <TextBlock x:Name="FdAvg" Style="{StaticResource BigNumber}" FontSize="30" Text="0.0000"/>
+                <Border Style="{StaticResource Divider}"/>
+                <DockPanel Margin="0,3">
+                    <TextBlock x:Name="FdSum" DockPanel.Dock="Right" Style="{StaticResource NumberText}" Text="0.00"/>
+                    <TextBlock Style="{StaticResource BodyText}" Text="Σ Area (%)"/>
+                </DockPanel>
+                <DockPanel Margin="0,3">
+                    <TextBlock x:Name="FdMolar" DockPanel.Dock="Right" Style="{StaticResource NumberText}" Text="0.0000"/>
+                    <TextBlock Style="{StaticResource BodyText}" Text="Molar Flowrate (kmol/hr)"/>
+                </DockPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- ===================== H2/HC result ===================== -->
+        <Border Style="{StaticResource HighlightCard}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource MutedText}" Text="H₂/HC Ratio (mol/mol)"/>
+                <TextBlock x:Name="TvRatio" Style="{StaticResource BigNumber}" Text="0.0000"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

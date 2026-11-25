@@ -1,0 +1,39 @@
+<UserControl x:Class="IsomerizationCalc.LhsvView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:Background="#0E1620"
+             d:DesignWidth="820" d:DesignHeight="400">
+    <StackPanel>
+        <TextBlock Style="{StaticResource SectionTitle}" Text="Liquid Hourly Space Velocity"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,0,10,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Density (ton/m³)"/>
+                <TextBox x:Name="Density" Margin="0,4,0,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="0,0,10,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Flow Rate (ton/hr)"/>
+                <TextBox x:Name="FlowRate" Margin="0,4,0,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Margin="0,0,0,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Catalyst Volume (m³)"/>
+                <TextBox x:Name="CatalystVolume" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <Border Style="{StaticResource HighlightCard}" Margin="0,16,0,12">
+            <StackPanel>
+                <TextBlock Style="{StaticResource MutedText}" Text="LHSV"/>
+                <TextBlock x:Name="TvResult" Style="{StaticResource BigNumber}" Text="0.0000 hr⁻¹"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

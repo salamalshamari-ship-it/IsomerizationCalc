@@ -1,0 +1,39 @@
+<UserControl x:Class="IsomerizationCalc.XFactorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:Background="#0E1620"
+             d:DesignWidth="820" d:DesignHeight="400">
+    <StackPanel>
+        <TextBlock Style="{StaticResource SectionTitle}" Text="Composition (GC Area)"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,0,10,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="CHX"/>
+                <TextBox x:Name="Chx" Margin="0,4,0,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="0,0,10,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="Benzene"/>
+                <TextBox x:Name="Benzene" Margin="0,4,0,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Margin="0,0,0,4">
+                <TextBlock Style="{StaticResource FieldLabel}" Text="C7+"/>
+                <TextBox x:Name="C7Plus" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Grid>
+
+        <Border Style="{StaticResource HighlightCard}" Margin="0,16,0,12">
+            <StackPanel>
+                <TextBlock Style="{StaticResource MutedText}" Text="X. Factor Calculated"/>
+                <TextBlock x:Name="TvResult" Style="{StaticResource BigNumber}" Text="0.0000 wt%"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

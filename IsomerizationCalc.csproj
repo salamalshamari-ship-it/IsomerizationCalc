@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- Visual Studio 2026 ships with .NET 10. If your SDK is older, change to net8.0-windows. -->
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>IsomerizationCalc</AssemblyName>
+    <RootNamespace>IsomerizationCalc</RootNamespace>
+    <Version>1.0.0</Version>
+    <Product>IsomerizationCalc</Product>
+    <ApplicationIcon>IsomerizationCalc.ico</ApplicationIcon>
+    <InvariantGlobalization>false</InvariantGlobalization>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="IsomerizationCalc.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Reads and writes the Excel (.xlsx) file; restored automatically by Visual Studio. -->
+    <PackageReference Include="ClosedXML" Version="[0.104.0,1.0.0)" />
+  </ItemGroup>
+
+</Project>

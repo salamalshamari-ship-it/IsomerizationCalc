@@ -1,0 +1,114 @@
+<Window x:Class="IsomerizationCalc.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:IsomerizationCalc"
+        Title="IsomerizationCalc" Icon="IsomerizationCalc.ico"
+        Width="1000" Height="780" MinWidth="720" MinHeight="560"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="CanResize"
+        Background="{StaticResource Bg}"
+        FontFamily="Segoe UI"
+        Closing="Window_Closing">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed"/>
+    </Window.CommandBindings>
+    <DockPanel>
+    <!-- Top menu bar. Add or rename items here in the designer. -->
+    <Menu DockPanel.Dock="Top">
+        <MenuItem Header="File">
+            <MenuItem Header="فتح..." Command="ApplicationCommands.Open" InputGestureText="Ctrl+O"/>
+            <MenuItem Header="حفظ" Command="ApplicationCommands.Save" InputGestureText="Ctrl+S"/>
+            <Separator/>
+            <MenuItem Header="خروج" Click="Exit_Click" InputGestureText="Alt+F4"/>
+        </MenuItem>
+        <MenuItem Header="Edit">
+            <MenuItem Header="للخلف" Command="ApplicationCommands.Undo" InputGestureText="Ctrl+Z"/>
+            <MenuItem Header="للأمام" Command="ApplicationCommands.Redo" InputGestureText="Ctrl+Y"/>
+            <Separator/>
+            <MenuItem Header="قص" Command="ApplicationCommands.Cut" InputGestureText="Ctrl+X"/>
+            <MenuItem Header="نسخ" Command="ApplicationCommands.Copy" InputGestureText="Ctrl+C"/>
+            <MenuItem Header="لصق" Command="ApplicationCommands.Paste" InputGestureText="Ctrl+V"/>
+            <Separator/>
+            <MenuItem Header="اختيار الكل" Command="ApplicationCommands.SelectAll" InputGestureText="Ctrl+A"/>
+        </MenuItem>
+        <MenuItem Header="About" Click="About_Click"/>
+    </Menu>
+    <Grid Margin="18,14,18,14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title bar: Clear button on the left, title on the right -->
+        <DockPanel x:Name="TitleBar" Grid.Row="0" Margin="0,0,0,12" LastChildFill="True">
+            <Button x:Name="ClearButton" DockPanel.Dock="Left" Content="مسح"
+                    Padding="22,7" Click="Clear_Click"/>
+            <TextBlock Text="حاسبة إنتاج وحدة الازمرة" FontSize="34" FontWeight="Bold"
+                       FontFamily="Simplified Arabic, Segoe UI"
+                       Foreground="{StaticResource Ink}" VerticalAlignment="Center"
+                       HorizontalAlignment="Right" TextAlignment="Right"/>
+        </DockPanel>
+
+        <!-- Each tab shows one view. Open the *View.xaml file to design that tab. -->
+        <TabControl x:Name="Tabs" Grid.Row="1" SelectionChanged="Tabs_SelectionChanged">
+
+            <TabItem x:Name="ProductionTab" Header="Production">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <Border MaxWidth="860" Margin="4,14">
+                        <local:ProductionView x:Name="ProductionPage"/>
+                    </Border>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="RON">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <Border MaxWidth="860" Margin="4,14">
+                        <local:RonView x:Name="RonPage"/>
+                    </Border>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="X-Factor">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <Border MaxWidth="860" Margin="4,14">
+                        <local:XFactorView x:Name="XFactorPage"/>
+                    </Border>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="LHSV">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <Border MaxWidth="860" Margin="4,14">
+                        <local:LhsvView x:Name="LhsvPage"/>
+                    </Border>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="H₂/HC">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <Border MaxWidth="860" Margin="4,14">
+                        <local:H2HcView x:Name="H2HcPage"/>
+                    </Border>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="Units">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <Border MaxWidth="860" Margin="4,14">
+                        <local:UnitsView x:Name="UnitsPage"/>
+                    </Border>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="Summary">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <Border MaxWidth="860" Margin="4,14">
+                        <local:SummaryView x:Name="SummaryPage"/>
+                    </Border>
+                </ScrollViewer>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+    </DockPanel>
+</Window>

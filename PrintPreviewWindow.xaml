@@ -1,0 +1,22 @@
+<Window x:Class="IsomerizationCalc.PrintPreviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="معاينة قبل الطباعة" Width="920" Height="780" MinWidth="560" MinHeight="420"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+        FlowDirection="RightToLeft"
+        Background="{StaticResource Bg}" FontFamily="Segoe UI">
+    <DockPanel>
+        <!-- Buttons under the preview -->
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+            <Button x:Name="PrintButton" Style="{StaticResource PrimaryButton}" Content="طباعة..."
+                    Padding="34,9" Margin="0,0,10,0" Click="Print_Click"/>
+            <Button Content="إغلاق" Padding="34,9" IsCancel="True" Click="Close_Click"/>
+        </StackPanel>
+
+        <!-- White A4 sheets on a grey desk, exactly what will be printed -->
+        <ScrollViewer x:Name="Desk" Background="#59616B" Margin="10,10,10,0"
+                      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel x:Name="Pages" FlowDirection="LeftToRight" HorizontalAlignment="Center" Margin="20"/>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

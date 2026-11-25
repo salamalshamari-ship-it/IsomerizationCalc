@@ -1,0 +1,139 @@
+<UserControl x:Class="IsomerizationCalc.RonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:Background="#0E1620"
+             d:DesignWidth="820" d:DesignHeight="1100">
+    <StackPanel>
+        <TextBlock Style="{StaticResource SectionTitle}" Text="GC Composition (Area %)"/>
+
+        <Border Style="{StaticResource CardBorder}">
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource ColHeader}" Text="Comp"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource ColHeader}" Text="REF."/>
+                <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource ColHeader}" Text="Area"/>
+                <TextBlock Grid.Row="0" Grid.Column="3" Style="{StaticResource ColHeader}" Text="Per.%"/>
+                <TextBlock Grid.Row="0" Grid.Column="4" Style="{StaticResource ColHeader}" Text="SUM"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="iC4"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource MutedText}" Text="100.2"/>
+                <TextBox Grid.Row="1" Grid.Column="2" x:Name="AreaIC4" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="1" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerIC4" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="1" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumIC4" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="nC4"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource MutedText}" Text="95.0"/>
+                <TextBox Grid.Row="2" Grid.Column="2" x:Name="AreaNC4" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="2" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerNC4" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="2" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumNC4" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="iC5"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource MutedText}" Text="93.5"/>
+                <TextBox Grid.Row="3" Grid.Column="2" x:Name="AreaIC5" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="3" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerIC5" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="3" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumIC5" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="nC5"/>
+                <TextBlock Grid.Row="4" Grid.Column="1" Style="{StaticResource MutedText}" Text="61.7"/>
+                <TextBox Grid.Row="4" Grid.Column="2" x:Name="AreaNC5" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="4" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerNC5" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="4" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumNC5" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="CP"/>
+                <TextBlock Grid.Row="5" Grid.Column="1" Style="{StaticResource MutedText}" Text="102.3"/>
+                <TextBox Grid.Row="5" Grid.Column="2" x:Name="AreaCP" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="5" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerCP" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="5" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumCP" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="6" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="22DMB"/>
+                <TextBlock Grid.Row="6" Grid.Column="1" Style="{StaticResource MutedText}" Text="94.0"/>
+                <TextBox Grid.Row="6" Grid.Column="2" x:Name="AreaDMB22" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="6" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerDMB22" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="6" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumDMB22" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="7" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="23DMB"/>
+                <TextBlock Grid.Row="7" Grid.Column="1" Style="{StaticResource MutedText}" Text="105.0"/>
+                <TextBox Grid.Row="7" Grid.Column="2" x:Name="AreaDMB23" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="7" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerDMB23" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="7" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumDMB23" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="8" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="2MP"/>
+                <TextBlock Grid.Row="8" Grid.Column="1" Style="{StaticResource MutedText}" Text="74.4"/>
+                <TextBox Grid.Row="8" Grid.Column="2" x:Name="AreaMP2" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="8" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerMP2" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="8" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumMP2" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="9" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="3MP"/>
+                <TextBlock Grid.Row="9" Grid.Column="1" Style="{StaticResource MutedText}" Text="75.5"/>
+                <TextBox Grid.Row="9" Grid.Column="2" x:Name="AreaMP3" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="9" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerMP3" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="9" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumMP3" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="10" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="nC6"/>
+                <TextBlock Grid.Row="10" Grid.Column="1" Style="{StaticResource MutedText}" Text="31.0"/>
+                <TextBox Grid.Row="10" Grid.Column="2" x:Name="AreaNC6" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="10" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerNC6" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="10" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumNC6" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="11" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="MCP"/>
+                <TextBlock Grid.Row="11" Grid.Column="1" Style="{StaticResource MutedText}" Text="96.0"/>
+                <TextBox Grid.Row="11" Grid.Column="2" x:Name="AreaMCP" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="11" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerMCP" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="11" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumMCP" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="12" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="Benzene"/>
+                <TextBlock Grid.Row="12" Grid.Column="1" Style="{StaticResource MutedText}" Text="120.0"/>
+                <TextBox Grid.Row="12" Grid.Column="2" x:Name="AreaBenzene" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="12" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerBenzene" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="12" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumBenzene" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="13" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="CHX"/>
+                <TextBlock Grid.Row="13" Grid.Column="1" Style="{StaticResource MutedText}" Text="84.0"/>
+                <TextBox Grid.Row="13" Grid.Column="2" x:Name="AreaCHX" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="13" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerCHX" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="13" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumCHX" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="14" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="P7+"/>
+                <TextBlock Grid.Row="14" Grid.Column="1" Style="{StaticResource MutedText}" Text="55.0"/>
+                <TextBox Grid.Row="14" Grid.Column="2" x:Name="AreaP7Plus" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="14" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerP7Plus" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="14" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumP7Plus" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <TextBlock Grid.Row="15" Grid.Column="0" Style="{StaticResource BodyText}" FontWeight="SemiBold" Margin="4,0,0,0" Text="N7+"/>
+                <TextBlock Grid.Row="15" Grid.Column="1" Style="{StaticResource MutedText}" Text="76.0"/>
+                <TextBox Grid.Row="15" Grid.Column="2" x:Name="AreaN7Plus" Margin="3" HorizontalContentAlignment="Center"/>
+                <Border Grid.Row="15" Grid.Column="3" Style="{StaticResource OutCell}"><TextBlock x:Name="PerN7Plus" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+                <Border Grid.Row="15" Grid.Column="4" Style="{StaticResource OutCell}"><TextBlock x:Name="SumN7Plus" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="0.0000"/></Border>
+            </Grid>
+        </Border>
+
+        <!-- Result card -->
+        <Border Style="{StaticResource HighlightCard}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource MutedText}" Text="RON Calculated"/>
+                <TextBlock x:Name="TvRon" Style="{StaticResource BigNumber}" Text="0.0000"/>
+                <Border Style="{StaticResource Divider}"/>
+                <TextBlock Style="{StaticResource MutedText}" Text="PIN Calculated (%)"/>
+                <TextBlock x:Name="TvPin" Style="{StaticResource BigNumber}" Text="0.0000"/>
+                <Border Style="{StaticResource Divider}"/>
+                <DockPanel>
+                    <TextBlock x:Name="TvAreaSum" DockPanel.Dock="Right" Style="{StaticResource NumberText}" Text="0.00"/>
+                    <TextBlock Style="{StaticResource BodyText}" Text="Σ Area (%)"/>
+                </DockPanel>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

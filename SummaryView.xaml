@@ -1,0 +1,154 @@
+<UserControl x:Class="IsomerizationCalc.SummaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:IsomerizationCalc"
+             mc:Ignorable="d"
+             d:Background="#0E1620"
+             d:DesignWidth="820" d:DesignHeight="800">
+    <UserControl.Resources>
+        <!-- One line of the saved-records list. Design it here. -->
+        <DataTemplate x:Key="RecordTemplate">
+            <Grid Margin="0,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="36"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="110"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox Grid.Column="0" IsChecked="{Binding IsChecked, Mode=TwoWay}" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Style="{StaticResource BodyText}" FlowDirection="LeftToRight" HorizontalAlignment="Center" Text="{Binding Date}"/>
+                <TextBlock Grid.Column="2" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="{Binding Yield}"/>
+                <TextBlock Grid.Column="3" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="{Binding Ron}"/>
+                <TextBlock Grid.Column="4" Style="{StaticResource NumberText}" HorizontalAlignment="Center" Text="{Binding H2Hc}"/>
+                <Button Grid.Column="5" Content="تحميل" Padding="10,3" Tag="{Binding}" Click="LoadRow_Click"/>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <StackPanel>
+        <TextBlock Style="{StaticResource SectionTitle}" Text="Summary"/>
+
+        <!-- Highlighted results: 3 cards per row -->
+        <UniformGrid Columns="3">
+            <Border Style="{StaticResource HighlightCard}" Margin="0,0,10,10">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SectionTitle}" Margin="0" Text="RON"/>
+                    <TextBlock x:Name="TvRon" Style="{StaticResource BigNumber}" FontSize="30" Margin="0,6,0,2" Text="0.0000"/>
+                    <TextBlock Style="{StaticResource MutedText}" FontSize="13" Text="octane number"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource HighlightCard}" Margin="0,0,10,10">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SectionTitle}" Margin="0" Text="H₂/HC"/>
+                    <TextBlock x:Name="TvH2hc" Style="{StaticResource BigNumber}" FontSize="30" Margin="0,6,0,2" Text="0.0000"/>
+                    <TextBlock Style="{StaticResource MutedText}" FontSize="13" Text="mol/mol"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource HighlightCard}" Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SectionTitle}" Margin="0" Text="X. Factor"/>
+                    <TextBlock x:Name="TvXFactor" Style="{StaticResource BigNumber}" FontSize="30" Margin="0,6,0,2" Text="0.0000"/>
+                    <TextBlock Style="{StaticResource MutedText}" FontSize="13" Text="wt%"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource HighlightCard}" Margin="0,0,10,10">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SectionTitle}" Margin="0" Text="PIN"/>
+                    <TextBlock x:Name="TvPin" Style="{StaticResource BigNumber}" FontSize="30" Margin="0,6,0,2" Text="0.0000"/>
+                    <TextBlock Style="{StaticResource MutedText}" FontSize="13" Text="%"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource HighlightCard}" Margin="0,0,10,10">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SectionTitle}" Margin="0" Text="LHSV"/>
+                    <TextBlock x:Name="TvLhsv" Style="{StaticResource BigNumber}" FontSize="30" Margin="0,6,0,2" Text="0.0000"/>
+                    <TextBlock Style="{StaticResource MutedText}" FontSize="13" Text="1/hr"/>
+                </StackPanel>
+            </Border>
+            <Border Style="{StaticResource HighlightCard}" Margin="0,0,0,10">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SectionTitle}" Margin="0" Text="Yield"/>
+                    <TextBlock x:Name="TvYield" Style="{StaticResource BigNumber}" FontSize="30" Margin="0,6,0,2" Text="0.00"/>
+                    <TextBlock Style="{StaticResource MutedText}" FontSize="13" Text="%"/>
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+
+        <!-- H2/HC details -->
+        <Border Style="{StaticResource CardBorder}">
+            <TextBlock x:Name="TvDetails" Style="{StaticResource MonoBlock}"/>
+        </Border>
+
+        <!-- ===================== Trend of the saved records (database / Excel file) ===================== -->
+        <Border Style="{StaticResource CardBorder}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource SectionTitle}" Text="منحنى القيم المحفوظة"/>
+                <WrapPanel Margin="0,8,0,0">
+                    <RadioButton GroupName="TrendMetric" Tag="0" Content="X. Factor" Style="{StaticResource ChipRadio}" IsChecked="True" Checked="Chip_Checked"/>
+                    <RadioButton GroupName="TrendMetric" Tag="1" Content="H₂/HC" Style="{StaticResource ChipRadio}" Checked="Chip_Checked"/>
+                    <RadioButton GroupName="TrendMetric" Tag="2" Content="RON" Style="{StaticResource ChipRadio}" Checked="Chip_Checked"/>
+                    <RadioButton GroupName="TrendMetric" Tag="3" Content="PIN" Style="{StaticResource ChipRadio}" Checked="Chip_Checked"/>
+                    <RadioButton GroupName="TrendMetric" Tag="4" Content="Yield" Style="{StaticResource ChipRadio}" Checked="Chip_Checked"/>
+                    <RadioButton GroupName="TrendMetric" Tag="5" Content="LHSV" Style="{StaticResource ChipRadio}" Checked="Chip_Checked"/>
+                </WrapPanel>
+                <local:TrendChart x:Name="Chart" Height="230" Margin="0,4,0,0"/>
+                <TextBlock x:Name="TvTrendInfo" Style="{StaticResource MutedText}" FontSize="12" TextWrapping="Wrap"
+                           Margin="0,6,0,0" Text="مرّر الفأرة على المنحنى لقراءة قيمة أي نقطة."/>
+            </StackPanel>
+        </Border>
+
+        <Button x:Name="SaveButton" Style="{StaticResource PrimaryButton}" Content="حفظ الملخص" Padding="0,12"
+                Margin="0,4,0,8" Click="Save_Click"/>
+
+        <Button x:Name="ChooseExcelButton" Content="اختيار مكان ملف Excel..." Padding="0,10" FontSize="15"
+                Margin="0,0,0,8" Click="ChooseExcel_Click"/>
+        <TextBlock x:Name="TvExcelPath" Style="{StaticResource MutedText}" FontSize="13"
+                   TextWrapping="Wrap" Margin="0,0,0,8"/>
+
+        <UniformGrid Columns="3" Margin="0,0,0,8">
+            <Button x:Name="PrintButton" Content="معاينة وطباعة الملخص" Padding="0,9" Margin="0,0,6,0" Click="Print_Click"/>
+            <Button x:Name="BackupButton" Content="نسخ احتياطي..." Padding="0,9" Margin="3,0" Click="Backup_Click"/>
+            <Button x:Name="RestoreButton" Content="استرجاع..." Padding="0,9" Margin="6,0,0,0" Click="Restore_Click"/>
+        </UniformGrid>
+
+        <TextBlock Style="{StaticResource MutedText}" FontSize="13" TextWrapping="Wrap"
+                   FlowDirection="RightToLeft"
+                   Text="كل حفظ يُضاف كسطر جديد في نفس ملف Excel (تبقى السجلات السابقة) وفي قاعدة البيانات."/>
+        <TextBlock x:Name="TvStatus" Style="{StaticResource MutedText}" FontSize="13"
+                   FlowDirection="RightToLeft" TextWrapping="Wrap" Margin="0,6,0,0"/>
+
+        <!-- ===================== Saved records (edit the database / Excel file) ===================== -->
+        <Border Style="{StaticResource CardBorder}" Margin="0,16,0,0">
+            <StackPanel FlowDirection="RightToLeft">
+                <TextBlock Style="{StaticResource SectionTitle}" Text="السجلات المحفوظة"/>
+                <TextBlock x:Name="TvCount" Style="{StaticResource MutedText}" FontSize="13" Text="عدد السجلات: 0"/>
+
+                <WrapPanel Margin="0,10,0,10">
+                    <Button x:Name="SelectAllButton" Content="تحديد الكل" Padding="14,6" Margin="0,0,0,0" Click="SelectAll_Click"/>
+                    <Button x:Name="DeleteButton" Content="حذف المحدد" Padding="14,6" Margin="8,0,0,0" Click="DeleteMarked_Click"/>
+                </WrapPanel>
+
+                <!-- Column titles (same widths as the rows) -->
+                <Grid Margin="0,0,0,4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="36"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="110"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" Style="{StaticResource ColHeader}" HorizontalAlignment="Center" Text="Date &amp; time"/>
+                    <TextBlock Grid.Column="2" Style="{StaticResource ColHeader}" HorizontalAlignment="Center" Text="Yield (%)"/>
+                    <TextBlock Grid.Column="3" Style="{StaticResource ColHeader}" HorizontalAlignment="Center" Text="RON"/>
+                    <TextBlock Grid.Column="4" Style="{StaticResource ColHeader}" HorizontalAlignment="Center" Text="H₂/HC"/>
+                </Grid>
+
+                <ItemsControl x:Name="RecordList" ItemTemplate="{StaticResource RecordTemplate}"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>
