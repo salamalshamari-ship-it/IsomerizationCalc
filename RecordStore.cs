@@ -194,6 +194,28 @@ static class RecordStore
         public List<SummaryRecord> Records { get; set; } = new();
     }
 
+    /// <summary>
+    /// Copies the database and the Excel file into Documents\Isomerization Calculation\Backups\
+    /// before an update, so nothing can be lost.
+    /// </summary>
+    public static (bool Ok, string Message) BackupBeforeUpdate()
+    {
+        try
+        {
+            string dir = Path.Combine(Folder, "Backups", "before-update_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+            Directory.CreateDirectory(dir);
+            if (File.Exists(DbPath)) File.Copy(DbPath, Path.Combine(dir, "records.json"), true);
+            string excel = ExcelPath;
+            if (File.Exists(excel)) File.Copy(excel, Path.Combine(dir, Path.GetFileName(excel)), true);
+            var (ok, message) = Backup(Path.Combine(dir, "IsomerizationBackup.isobak"));
+            return ok ? (true, dir) : (false, message);
+        }
+        catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+        {
+            return (false, "تعذّر النسخ الاحتياطي قبل التحديث: " + ex.Message);
+        }
+    }
+
     /// <summary>Writes every saved record (with its typed inputs) to a single backup file.</summary>
     public static (bool Ok, string Message) Backup(string path)
     {

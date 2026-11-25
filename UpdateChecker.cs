@@ -48,7 +48,7 @@ public static class UpdateChecker
     public static async Task<UpdateInfo?> CheckAsync()
     {
         if (Owner.StartsWith("YOUR_", StringComparison.Ordinal))
-            throw new InvalidOperationException("لم يُضبط حساب GitHub بعد: عدّل Owner و Repo في الملف UpdateChecker.cs.");
+            throw new InvalidOperationException("تعذّر البحث عن تحديث حالياً.");
 
         string json;
         try
@@ -56,9 +56,9 @@ public static class UpdateChecker
             using var client = NewClient();
             using var response = await client.GetAsync($"https://api.github.com/repos/{Owner}/{Repo}/releases/latest");
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                throw new InvalidOperationException("لا يوجد إصدار منشور على GitHub بعد.");
+                throw new InvalidOperationException("لا يوجد تحديث منشور بعد.");
             if (!response.IsSuccessStatusCode)
-                throw new InvalidOperationException("تعذّر الاتصال بـ GitHub (الرمز " + (int)response.StatusCode + ").");
+                throw new InvalidOperationException("تعذّر البحث عن تحديث (الرمز " + (int)response.StatusCode + ").");
             json = await response.Content.ReadAsStringAsync();
         }
         catch (HttpRequestException)
@@ -67,14 +67,14 @@ public static class UpdateChecker
         }
         catch (TaskCanceledException)
         {
-            throw new InvalidOperationException("انتهت مهلة الاتصال بـ GitHub.");
+            throw new InvalidOperationException("انتهت مهلة الاتصال، حاول مرة أخرى.");
         }
 
         using var doc = JsonDocument.Parse(json);
         var root = doc.RootElement;
         string tag = root.GetProperty("tag_name").GetString() ?? "";
         if (!TryParseTag(tag, out var latest))
-            throw new InvalidOperationException("رقم الإصدار على GitHub غير مفهوم: " + tag);
+            throw new InvalidOperationException("رقم الإصدار الجديد غير مفهوم: " + tag);
 
         var cur = Current;
         var current = new Version(cur.Major, cur.Minor, Math.Max(cur.Build, 0), Math.Max(cur.Revision, 0));
